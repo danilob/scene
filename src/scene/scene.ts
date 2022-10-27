@@ -1,4 +1,4 @@
-import {
+import THREE, {
   Scene,
   AxesHelper,
   AmbientLight,
@@ -8,6 +8,13 @@ import {
   MeshToonMaterial,
   PlaneGeometry,
   Color,
+  BoxGeometry,
+  MeshBasicMaterial,
+  CircleGeometry,
+  Curve,
+  TubeGeometry,
+  Vector2,
+  Vector3,
 } from "three"
 import { renderer, updateRenderer } from "/src/core/renderer"
 
@@ -37,6 +44,7 @@ scene.add(directionalLight)
 
 const PARAMS = {
   color: "#5EDCAE",
+  color_2: "#00DDAE",
 }
 
 const sphere = new Mesh(
@@ -50,9 +58,79 @@ const sphere = new Mesh(
 sphere.position.set(0, 2, 0)
 sphere.castShadow = true
 
+const sphere_2 = new Mesh(
+  new SphereGeometry(0.75, 32, 32),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.color_2),
+    wireframe: false,
+  })
+)
+
+///////////////////////////////////////////////
+
+
+const cubo_r = new Mesh(
+  new BoxGeometry(0.5, 2, 2),
+  new MeshBasicMaterial({color: 0x44aa88}),
+)
+
+const cubo_l = new Mesh(
+  new BoxGeometry(0.5, 2, 2),
+  new MeshBasicMaterial({color: 0x44aa88}),
+)
+  
+const circle_r = new Mesh(
+  new CircleGeometry(0.50, 32, 2)
+)
+const circle_l = new Mesh(
+  new CircleGeometry(0.50, 32, 2)
+)
+
+const cubo_r_ext = new Mesh(
+  new BoxGeometry(0.25, 3/2, 3/2),
+  new MeshBasicMaterial({color: 0x77aaaa}),
+)
+
+const cubo_l_ext = new Mesh(
+  new BoxGeometry(0.25, 3/2, 3/2),
+  new MeshBasicMaterial({color: 0x77aaaa}),
+)
+
+const aste = new Mesh(
+  
+)
+
+cubo_l.position.set(-2,2,0)
+cubo_l_ext.position.set(-5/2,2,0)
+cubo_r.position.set(2,2,0)
+cubo_r_ext.position.set(5/2,2,0)
+circle_r.position.set(2.625,2,0)
+circle_r.rotation.set(0,Math.PI/2,0)
+circle_l.position.set(-2.625,2,0)
+circle_l.rotation.set(0,-Math.PI/2,0)
+
+
+scene.add(cubo_r)
+scene.add(cubo_r_ext)
+scene.add(cubo_l)
+scene.add(cubo_l_ext)
+scene.add(circle_r)
+scene.add(circle_l)
+
+
+
+//////////////////////////////////////////////
+sphere_2.position.set(0,3,4)
+sphere_2.scale.set(1,1,1)
+sphere_2.rotation.set(0, 0, 0)
+//sphere_2.castShadow = true
+
 const sphereCtrls = gui.addFolder({
   title: "Sphere",
 })
+
+
+
 
 sphereCtrls.addInput(sphere.position, "x", {
   label: "pos x",
@@ -79,6 +157,7 @@ sphereCtrls.addInput(PARAMS, "color").on("change", (e) => {
 sphereCtrls.addInput(sphere.material, "wireframe")
 
 scene.add(sphere)
+scene.add(sphere_2)
 
 const plane = new Mesh(
   new PlaneGeometry(10, 10, 10, 10),
