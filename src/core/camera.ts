@@ -1,4 +1,6 @@
 import { PerspectiveCamera, Vector3 } from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { renderer } from './renderer'
 
 const VERTICAL_FIELD_OF_VIEW = 45
 const NEAR = 0.1
@@ -16,7 +18,7 @@ export const camera = new PerspectiveCamera(
   FAR
 )
 
-camera.position.set(1, 15, 8)
+camera.position.set(0, 30, 4)
 
 window.addEventListener('resize', () => {
   sizes.width = window.innerWidth
@@ -24,5 +26,4 @@ window.addEventListener('resize', () => {
   camera.aspect = sizes.width / sizes.height
   camera.updateProjectionMatrix()
 })
-
 export default camera

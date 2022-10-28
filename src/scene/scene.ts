@@ -247,6 +247,86 @@ headstockDetail.position.set(1.47, 21.5, 0.01)
 headstockDetail.rotation.set(-Math.PI / 1.8, 0, 0)
 scene.add(headstockDetail)
 
+const tunerMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color6),
+  wireframe: false
+})
+const tunerDetailMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color5),
+  wireframe: false
+})
+const tuner1 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner1.position.set(0.4, 21.3, 0.01)
+tuner1.rotation.set(-Math.PI / 1.8, Math.PI / 1.4, 0)
+scene.add(tuner1)
+const tuner1Detail = new Mesh(
+  new BoxGeometry(0.2, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner1Detail.position.set(0.65, 21.3, 0.01)
+tuner1Detail.rotation.set(-Math.PI / 1.8, 0, 0)
+scene.add(tuner1Detail)
+
+const tuner2 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner2.position.set(0.35, 22.02, 0.01)
+tuner2.rotation.set(-Math.PI / 1.8, Math.PI / 1.35, 0)
+scene.add(tuner2)
+const tuner2Detail = new Mesh(
+  new BoxGeometry(0.2, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner2Detail.position.set(0.6, 22, 0.01)
+tuner2Detail.rotation.set(-Math.PI / 1.8, -Math.PI / 1.01, 0)
+scene.add(tuner2Detail)
+
+const tuner3 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner3.position.set(0.6, 22.74, -0.2)
+tuner3.rotation.set(-Math.PI / 1.8, Math.PI / 1.3, 0)
+scene.add(tuner3)
+const tuner3Detail = new Mesh(
+  new BoxGeometry(0.3, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner3Detail.position.set(0.9, 22.7, -0.2)
+tuner3Detail.rotation.set(-Math.PI / 1.8, -Math.PI / 1.05, 0)
+scene.add(tuner3Detail)
+
+const tuner4 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner4.position.set(2.55, 21.3, 0.01)
+tuner4.rotation.set(-Math.PI / 1.8, -Math.PI / 1.4, 0)
+scene.add(tuner4)
+const tuner4Detail = new Mesh(
+  new BoxGeometry(0.2, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner4Detail.position.set(2.3, 21.3, 0.01)
+tuner4Detail.rotation.set(-Math.PI / 1.8, 0, 0)
+scene.add(tuner4Detail)
+
+const tuner5 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner5.position.set(2.65, 22.02, 0.01)
+tuner5.rotation.set(-Math.PI / 1.8, -Math.PI / 1.35, 0)
+scene.add(tuner5)
+const tuner5Detail = new Mesh(
+  new BoxGeometry(0.2, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner5Detail.position.set(2.4, 22, 0.01)
+tuner5Detail.rotation.set(-Math.PI / 1.8, Math.PI / 1.04, 0)
+scene.add(tuner5Detail)
+
+const tuner6 = new Mesh(new CylinderGeometry(0.2, 0.2, 0.2, 5), tunerMaterial)
+tuner6.position.set(2.3, 22.74, -0.2)
+tuner6.rotation.set(-Math.PI / 1.8, -Math.PI / 1.3, 0)
+scene.add(tuner6)
+const tuner6Detail = new Mesh(
+  new BoxGeometry(0.3, 0.2, 0.2),
+  tunerDetailMaterial
+)
+tuner6Detail.position.set(2, 22.7, -0.2)
+tuner6Detail.rotation.set(-Math.PI / 1.8, Math.PI / 1.05, 0)
+scene.add(tuner6Detail)
+
 const bridgeMaterial = new MeshPhongMaterial({
   color: new Color(PARAMS.color3),
   wireframe: false
