@@ -47,7 +47,8 @@ const PARAMS = {
   color2: '#000000',
   color3: '#E8D4D1',
   color4: '#2E1500',
-  color5: '#ffffff'
+  color5: '#ffffff',
+  color6: '#FED101'
 }
 
 const material = new MeshPhongMaterial({
@@ -271,8 +272,23 @@ bridge.position.set(1.48, 7.5, 0.35)
 bridge.rotation.set(Math.PI / 1, 0, 0)
 scene.add(bridge)
 
-const controlMaterial = new MeshPhongMaterial({
+const bridgeDetailMaterial = new MeshPhongMaterial({
   color: new Color(PARAMS.color2),
+  wireframe: false
+})
+
+for (let i = 0; i < 6; i++) {
+  const bridgeDetail = new Mesh(
+    new BoxGeometry(0.15, 0.15, 0.6),
+    bridgeDetailMaterial
+  )
+  bridgeDetail.position.set(0.8 + i / 3.65, 7.5, 0.36)
+  bridgeDetail.rotation.set(Math.PI / 1, 0, 0)
+  scene.add(bridgeDetail)
+}
+
+const controlMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color6),
   wireframe: false
 })
 const control1 = new Mesh(
