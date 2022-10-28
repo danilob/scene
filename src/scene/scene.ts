@@ -240,6 +240,16 @@ nut.position.set(1.48, 21, 0.4)
 nut.rotation.set(Math.PI / 1, 0, 0)
 scene.add(nut)
 
+const headstock1 = new Mesh(new CylinderGeometry(1, 1, 0.7, 5), material)
+headstock1.position.set(1.47, 21.5, 0)
+headstock1.rotation.set(-Math.PI / 1.8, 0, 0)
+scene.add(headstock1)
+
+const headstock2 = new Mesh(new CylinderGeometry(1.1, 1.1, 0.7, 3), material)
+headstock2.position.set(1.47, 22.35, -0.15)
+headstock2.rotation.set(-Math.PI / 1.8, 0, 0)
+scene.add(headstock2)
+
 const bridgeMaterial = new MeshPhongMaterial({
   color: new Color(PARAMS.color3),
   wireframe: false
