@@ -343,12 +343,43 @@ const bridgeDetailMaterial = new MeshPhongMaterial({
 
 for (let i = 0; i < 6; i++) {
   const bridgeDetail = new Mesh(
-    new BoxGeometry(0.15, 0.15, 0.6),
+    new BoxGeometry(0.1, 0.1, 0.6),
     bridgeDetailMaterial
   )
-  bridgeDetail.position.set(0.8 + i / 3.65, 7.5, 0.36)
+  bridgeDetail.position.set(1.07 + i / 6, 7.5, 0.36)
   bridgeDetail.rotation.set(Math.PI / 1, 0, 0)
   scene.add(bridgeDetail)
+}
+
+const bridgeScrew1 = new Mesh(
+  new CylinderGeometry(0.1, 0.1, 0.2, 6),
+  bridgeDetailMaterial
+)
+bridgeScrew1.position.set(0.8, 7.5, 0.6)
+bridgeScrew1.rotation.set(Math.PI / 2, 0, 0)
+scene.add(bridgeScrew1)
+
+const bridgeScrew2 = new Mesh(
+  new CylinderGeometry(0.1, 0.1, 0.2, 6),
+  bridgeDetailMaterial
+)
+bridgeScrew2.position.set(2.16, 7.5, 0.6)
+bridgeScrew2.rotation.set(Math.PI / 2, 0, 0)
+scene.add(bridgeScrew2)
+
+const stringMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color5),
+  wireframe: false
+})
+
+for (let i = 0; i < 6; i++) {
+  const string = new Mesh(
+    new CylinderGeometry(0.01, 0.01, 13.6, 15),
+    stringMaterial
+  )
+  string.position.set(1.07 + i / 6, 14.25, 0.65)
+  string.rotation.set(Math.PI / 1, 0, 0)
+  scene.add(string)
 }
 
 const controlMaterial = new MeshPhongMaterial({
