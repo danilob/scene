@@ -46,7 +46,8 @@ const PARAMS = {
   color1: '#FB3E2F',
   color2: '#000000',
   color3: '#E8D4D1',
-  color4: '#2E1500'
+  color4: '#2E1500',
+  color5: '#ffffff'
 }
 
 const material = new MeshPhongMaterial({
@@ -229,6 +230,15 @@ for (let i = 0; i < 22; i++) {
   fret.rotation.set(Math.PI / 1, 0, 0)
   scene.add(fret)
 }
+
+const nutMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color5),
+  wireframe: false
+})
+const nut = new Mesh(new BoxGeometry(1, 0.1, 0.52), nutMaterial)
+nut.position.set(1.48, 21, 0.4)
+nut.rotation.set(Math.PI / 1, 0, 0)
+scene.add(nut)
 
 const bridgeMaterial = new MeshPhongMaterial({
   color: new Color(PARAMS.color3),
