@@ -1,6 +1,4 @@
-import { PerspectiveCamera, Vector3 } from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { renderer } from './renderer'
+import { PerspectiveCamera } from 'three'
 
 const VERTICAL_FIELD_OF_VIEW = 45
 const NEAR = 0.1

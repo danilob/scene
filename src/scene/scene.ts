@@ -4,19 +4,14 @@ import {
   AmbientLight,
   DirectionalLight,
   Mesh,
-  SphereGeometry,
   MeshToonMaterial,
   PlaneGeometry,
   Color,
   MeshPhongMaterial,
   CylinderGeometry,
-  ExtrudeGeometry,
-  Shape,
-  ShapeGeometry,
-  Vector3,
   BoxGeometry
 } from 'three'
-import { renderer, updateRenderer } from '../core/renderer'
+import { updateRenderer } from '../core/renderer'
 
 import { gui } from '../core/gui'
 
@@ -55,38 +50,6 @@ const material = new MeshPhongMaterial({
   color: new Color(PARAMS.color1),
   wireframe: false
 })
-
-// const sphere = new Mesh(new SphereGeometry(0.75, 32, 32), material)
-// sphere.position.set(0, 2, 0)
-// sphere.castShadow = true
-
-// const sphereCtrls = gui.addFolder({
-//   title: 'Sphere'
-// })
-
-// sphereCtrls.addInput(sphere.position, 'x', {
-//   label: 'pos x',
-//   min: -10,
-//   max: 10,
-//   step: 0.1
-// })
-// sphereCtrls.addInput(sphere.position, 'y', {
-//   label: 'pos y',
-//   min: -10,
-//   max: 10,
-//   step: 0.1
-// })
-// sphereCtrls.addInput(sphere.position, 'z', {
-//   label: 'pos z',
-//   min: -10,
-//   max: 10,
-//   step: 0.1
-// })
-// sphereCtrls.addInput(PARAMS, 'color').on('change', (e) => {
-//   sphere.material.color = new Color(e.value)
-// })
-
-// sphereCtrls.addInput(sphere.material, 'wireframe')
 
 const radiusTop = 2
 const radiusBottom = 2
