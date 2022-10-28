@@ -250,6 +250,18 @@ headstock2.position.set(1.47, 22.35, -0.15)
 headstock2.rotation.set(-Math.PI / 1.8, 0, 0)
 scene.add(headstock2)
 
+const headstockDetailMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color3),
+  wireframe: false
+})
+const headstockDetail = new Mesh(
+  new CylinderGeometry(0.7, 0.7, 0.7, 5),
+  headstockDetailMaterial
+)
+headstockDetail.position.set(1.47, 21.5, 0.01)
+headstockDetail.rotation.set(-Math.PI / 1.8, 0, 0)
+scene.add(headstockDetail)
+
 const bridgeMaterial = new MeshPhongMaterial({
   color: new Color(PARAMS.color3),
   wireframe: false
