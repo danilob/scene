@@ -116,14 +116,6 @@ shape111.position.set(-1.7, 4.05, 0)
 shape111.rotation.set(Math.PI / 2, 0, 0)
 scene.add(shape111)
 
-const shape1111 = new Mesh(
-  new CylinderGeometry(radiusTop, radiusBottom, height, radialSegments),
-  material
-)
-shape1111.position.set(-3.4, 3.1, 0)
-shape1111.rotation.set(-Math.PI / 2, 0, 0)
-scene.add(shape1111)
-
 const shape2 = new Mesh(
   new CylinderGeometry(radiusTop, radiusBottom, height, radialSegments),
   material
@@ -147,14 +139,6 @@ const shape222 = new Mesh(
 shape222.position.set(4.65, 4.05, 0)
 shape222.rotation.set(Math.PI / 2, 0, 0)
 scene.add(shape222)
-
-const shape2222 = new Mesh(
-  new CylinderGeometry(radiusTop, radiusBottom, height, radialSegments),
-  material
-)
-shape2222.position.set(6.4, 3.1, 0)
-shape2222.rotation.set(-Math.PI / 2, 0, 0)
-scene.add(shape2222)
 
 const shape3 = new Mesh(
   new CylinderGeometry(radiusTop, radiusBottom, height, radialSegments),
