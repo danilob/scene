@@ -410,6 +410,27 @@ control3.position.set(4.5, 6.5, 0.35)
 control3.rotation.set(Math.PI / 2, 0, 0)
 scene.add(control3)
 
+const plugDetailMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color5),
+  wireframe: false
+})
+const plugDetail = new Mesh(
+  new CylinderGeometry(0.3, 0.25, 0.7, 20),
+  plugDetailMaterial
+)
+plugDetail.position.set(4.6, 4.5, 0.2)
+plugDetail.rotation.set(Math.PI / 2, 0, 0)
+scene.add(plugDetail)
+
+const plugMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color2),
+  wireframe: false
+})
+const plug = new Mesh(new CylinderGeometry(0.13, 0.13, 0.7, 6), plugMaterial)
+plug.position.set(4.6, 4.5, 0.23)
+plug.rotation.set(Math.PI / 2, 0, 0)
+scene.add(plug)
+
 const plane = new Mesh(
   new PlaneGeometry(20, 20, 20, 20),
   new MeshToonMaterial({
