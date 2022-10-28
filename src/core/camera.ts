@@ -1,4 +1,4 @@
-import { PerspectiveCamera } from 'three'
+import { PerspectiveCamera, Vector3 } from 'three'
 
 const VERTICAL_FIELD_OF_VIEW = 45
 const NEAR = 0.1
@@ -16,7 +16,7 @@ export const camera = new PerspectiveCamera(
   FAR
 )
 
-camera.position.set(1, 0, 20)
+camera.position.set(1, 25, 7)
 
 window.addEventListener('resize', () => {
   sizes.width = window.innerWidth

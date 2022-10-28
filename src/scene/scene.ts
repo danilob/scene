@@ -44,7 +44,9 @@ scene.add(directionalLight)
 
 const PARAMS = {
   color1: '#FB3E2F',
-  color2: '#000000'
+  color2: '#000000',
+  color3: '#E8D4D1',
+  color4: '#2E1500'
 }
 
 const material = new MeshPhongMaterial({
@@ -203,9 +205,39 @@ pickup1.rotation.set(Math.PI / 1, 0, 0)
 scene.add(pickup1)
 
 const pickup2 = new Mesh(new BoxGeometry(1.7, 1, 0.5), pickupMaterial)
-pickup2.position.set(1.48, 9, 0.35)
+pickup2.position.set(1.48, 8.5, 0.35)
 pickup2.rotation.set(Math.PI / 1, 0, 0)
 scene.add(pickup2)
+
+const neckMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color4),
+  wireframe: false
+})
+const neck = new Mesh(new BoxGeometry(1, 9, 1), neckMaterial)
+neck.position.set(1.48, 16.5, 0.1)
+neck.rotation.set(Math.PI / 1, 0, 0)
+scene.add(neck)
+
+const fretMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color3),
+  wireframe: false
+})
+
+for (let i = 0; i < 22; i++) {
+  const fret = new Mesh(new BoxGeometry(1, 0.02, 0.52), fretMaterial)
+  fret.position.set(1.48, 12.2 + i / 2.5, 0.35)
+  fret.rotation.set(Math.PI / 1, 0, 0)
+  scene.add(fret)
+}
+
+const bridgeMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color3),
+  wireframe: false
+})
+const bridge = new Mesh(new BoxGeometry(1.7, 0.5, 0.6), bridgeMaterial)
+bridge.position.set(1.48, 7.5, 0.35)
+bridge.rotation.set(Math.PI / 1, 0, 0)
+scene.add(bridge)
 
 const plane = new Mesh(
   new PlaneGeometry(20, 20, 20, 20),
