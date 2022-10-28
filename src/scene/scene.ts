@@ -271,6 +271,34 @@ bridge.position.set(1.48, 7.5, 0.35)
 bridge.rotation.set(Math.PI / 1, 0, 0)
 scene.add(bridge)
 
+const controlMaterial = new MeshPhongMaterial({
+  color: new Color(PARAMS.color2),
+  wireframe: false
+})
+const control1 = new Mesh(
+  new CylinderGeometry(0.3, 0.25, 0.7, 20),
+  controlMaterial
+)
+control1.position.set(3.6, 7.5, 0.35)
+control1.rotation.set(Math.PI / 2, 0, 0)
+scene.add(control1)
+
+const control2 = new Mesh(
+  new CylinderGeometry(0.3, 0.25, 0.7, 20),
+  controlMaterial
+)
+control2.position.set(3, 6.5, 0.35)
+control2.rotation.set(Math.PI / 2, 0, 0)
+scene.add(control2)
+
+const control3 = new Mesh(
+  new CylinderGeometry(0.3, 0.25, 0.7, 20),
+  controlMaterial
+)
+control3.position.set(4.5, 6.5, 0.35)
+control3.rotation.set(Math.PI / 2, 0, 0)
+scene.add(control3)
+
 const plane = new Mesh(
   new PlaneGeometry(20, 20, 20, 20),
   new MeshToonMaterial({
