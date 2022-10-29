@@ -41,13 +41,12 @@ directionalLight.position.set(0.25, 2, 2.25)
 scene.add(directionalLight)
 
 const PARAMS = {
-  color: "#5EDCAE",
-  color_2: "#00DDAE",
-  color_w: "#ECEAE3",
-  color_o: "#FA7E00",
-  color_b: "#62D5DB",
-  color_p: "#D663BA",
-  color_bb: "#C6FAE5",
+  color   : "#5EDCAE",
+  color_w : "#F5F5F5",
+  color_pb: "#FEDCF4",
+  color_pf: "#D9628D",
+  color_pm: "#D663BA",
+  color_bb: "#D9FFFF",
 }
 
 const sphere = new Mesh(
@@ -55,13 +54,11 @@ const sphere = new Mesh(
   new MeshToonMaterial({
     color: new Color(PARAMS.color),
     wireframe: false,
-  })
+})
 )
 
 sphere.position.set(0, 2, 0)
 sphere.castShadow = true
-
-/////////////////////
 
 const foam_l = new Mesh(
   new TorusGeometry( 0.75 , 0.5, 20, 15),
@@ -75,11 +72,11 @@ const foam_r = new Mesh(
 
 const speaker_r = new Mesh(
   new BoxGeometry(0.5, 2, 2),
-  new MeshBasicMaterial({color: PARAMS.color_o}),
+  new MeshBasicMaterial({color: PARAMS.color_pf}),
 )
 const speaker_l = new Mesh(
   new BoxGeometry(0.5, 2, 2),
-  new MeshBasicMaterial({color: PARAMS.color_o}),
+  new MeshBasicMaterial({color: PARAMS.color_pf}),
 )
   
 const play_symbol_r = new Mesh(
@@ -91,112 +88,118 @@ const play_symbol_l = new Mesh(
 
 const cubo_r_ext = new Mesh(
   new BoxGeometry(0.28, 3/2, 3/2),
-  new MeshBasicMaterial({color: PARAMS.color_w}),
+  new MeshBasicMaterial({color: PARAMS.color_pm}),
 )
 
 const cubo_l_ext = new Mesh(
   new BoxGeometry(0.28, 3/2, 3/2),
-  new MeshBasicMaterial({color: PARAMS.color_w}),
-)
-
-const slider_l = new Mesh(
-  new BoxGeometry(0.25, 2, 0.5, 5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshBasicMaterial({color: PARAMS.color_pm}),
 )
 
 // sequencia lado direito da haste
+const slider_r = new Mesh(
+  new BoxGeometry(0.25, 2, 0.5, 5),
+  new MeshToonMaterial({color: PARAMS.color_pm})
+)
+
 const slider_up = new Mesh(
   new BoxGeometry(0.27, 0.27, 0.55),
-  new MeshToonMaterial({color: PARAMS.color_o})
+  new MeshToonMaterial({color: PARAMS.color_pf})
 )
 
 const slider_up1 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_b})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up2 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up3 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up4 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
+)
+
+const slider_up5 = new Mesh(
+  new BoxGeometry(0.25, 0.3, 0.5),
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 
 //sequencia lado esquerdo da haste 
+const slider_l = new Mesh(
+  new BoxGeometry(0.25, 2, 0.5, 5),
+  new MeshToonMaterial({color: PARAMS.color_pm})
+)
+
 const slider_up_l = new Mesh(
   new BoxGeometry(0.27, 0.27, 0.55),
-  new MeshToonMaterial({color: PARAMS.color_o})
+  new MeshToonMaterial({color: PARAMS.color_pf})
 )
 
 const slider_up1_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_b})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up2_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up3_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_up4_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new MeshToonMaterial({color: PARAMS.color_pm})
+)
+const slider_up5_l = new Mesh(
+  new BoxGeometry(0.25, 0.3, 0.5),
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 
 // a parte de cima de haste
 const headband = new Mesh(
-  new BoxGeometry(0.228, 3.67, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new BoxGeometry(0.23, 3.5, 0.5),
+  new MeshToonMaterial({color: PARAMS.color_pm})
 )
 
 const slider_foam = new Mesh(
-  new CylinderGeometry(0.29, 0.29, 2.5, 12,2, true),
-  new MeshToonMaterial({color: PARAMS.color_p})
-)
-
-const slider_r = new Mesh(
-  new BoxGeometry(0.25, 2, 0.5, 5),
-  new MeshToonMaterial({color: PARAMS.color_bb})
+  new CylinderGeometry(0.28, 0.29, 2.5, 12,2),
+  new MeshToonMaterial({color: PARAMS.color_pb})
 )
 
 const mic_bind = new Mesh(
   new SphereGeometry(0.75, 32, 20),
-  new MeshToonMaterial({color: PARAMS.color_b})
+  new MeshToonMaterial({color: PARAMS.color_w})
 )
 
 const mic = new Mesh(
   new SphereGeometry(0.2, 32,32),
-  new MeshToonMaterial({color: PARAMS.color_w})
+  new MeshToonMaterial({color: PARAMS.color_pf})
 )
 
 
-
-speaker_l.position.set(-2,2,0)
+speaker_l.position.set(-2.2,2,0)
 cubo_l_ext.position.set(-2.39,2,0)
 play_symbol_l.position.set(-2.53,2,0)
-foam_l.position.set(-1.75,2,0)
+foam_l.position.set(-1.95,2,0)
 
-speaker_r.position.set(2,2,0)
+speaker_r.position.set(2.2,2,0)
 cubo_r_ext.position.set(2.39,2,0)
 play_symbol_r.position.set(2.53,2,0)
-foam_r.position.set(1.75,2,0)
-
-
+foam_r.position.set(1.95,2,0)
 
 // lado direito - haste posições
 slider_r.position.set(2.37,3,0)
@@ -205,9 +208,10 @@ slider_up1.position.set(2.32,4.25,0)
 slider_up2.position.set(2.238,4.50,0)
 slider_up3.position.set(2.1,4.7,0)
 slider_up4.position.set(1.90,4.849,0)
+slider_up5.position.set(1.78,4.92,0)
 
-headband.position.set(0,4.918,0)
-slider_foam.position.set(0,4.9,0)
+headband.position.set(0,4.98,0)
+slider_foam.position.set(0,4.98,0)
 
 //lado esquerdo - harte posições
 slider_l.position.set(-2.37,3,0)
@@ -216,6 +220,7 @@ slider_up1_l.position.set(-2.32,4.25,0)
 slider_up2_l.position.set(-2.238,4.50,0)
 slider_up3_l.position.set(-2.1,4.7,0)
 slider_up4_l.position.set(-1.90,4.849,0)
+slider_up5_l.position.set(-1.78,4.92,0)
 
 mic_bind.position.set(-1.75,2,1.5)
 mic.position.set(-1.2,2.1,2.5)
@@ -232,12 +237,17 @@ mic.rotation.set(0,-Math.PI/4, 0)
 foam_l.rotation.set(0,Math.PI/2,0)
 foam_r.rotation.set(0,Math.PI/2,0)
 
+speaker_r.rotation.set(0,0,-Math.PI/30)
+speaker_l.rotation.set(0,0,Math.PI/30)
+
+
 //lado direito - haste rotação
 slider_up.rotation.set(0, 0,Math.PI/15)
 slider_up1.rotation.set(0, 0,Math.PI/12)
 slider_up2.rotation.set(0, 0,Math.PI/8)
 slider_up3.rotation.set(0, 0,Math.PI/4)
 slider_up4.rotation.set(0, 0,Math.PI/3)
+slider_up5.rotation.set(0, 0,Math.PI/3)
 
 //lado esquerdo - haste rotação
 slider_up_l.rotation.set(0, 0,-Math.PI/15)
@@ -245,6 +255,7 @@ slider_up1_l.rotation.set(0, 0,-Math.PI/12)
 slider_up2_l.rotation.set(0, 0,-Math.PI/8)
 slider_up3_l.rotation.set(0, 0,-Math.PI/4)
 slider_up4_l.rotation.set(0, 0,-Math.PI/3)
+slider_up5_l.rotation.set(0, 0,-Math.PI/3)
 
 headband.rotation.set(0, 0,Math.PI/2)
 slider_foam.rotation.set(0, 0,Math.PI/2)
@@ -254,9 +265,8 @@ scene.add(speaker_r,
           cubo_r_ext,
           play_symbol_r,
           slider_r,
-          foam_r,)
-
-scene.add(speaker_l, 
+          foam_r,
+          speaker_l, 
           cubo_l_ext, 
           play_symbol_l,
           slider_l,
@@ -268,19 +278,20 @@ scene.add(slider_up,
           slider_up2,
           slider_up3, 
           slider_up4,
-          )
-
-scene.add(slider_up_l, 
+          slider_up5,
+          slider_up_l, 
           slider_up1_l, 
           slider_up2_l,
           slider_up3_l, 
           slider_up4_l,
-           )
+          slider_up5_l,
+          )
 
 scene.add(headband, 
           slider_foam,
+          mic_bind, 
+          mic,
           )
-scene.add(mic_bind, mic)
 
 
 const sphereCtrls = gui.addFolder({
