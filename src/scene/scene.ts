@@ -47,18 +47,49 @@ const PARAMS = {
   color_p: "#D9628D",
   color_dp: "#D663BA",
   color_lb: "#D9FFFF",
+  color_s: "#E69A5C",
 }
 
+// face
 const sphere = new Mesh(
-  new SphereGeometry(0.5, 32, 32),
+  new SphereGeometry(1.3, 32, 32),
   new MeshToonMaterial({
-    color: new Color(PARAMS.color),
+    color: new Color(PARAMS.color_s),
+    wireframe: false,
+})
+)
+const nariz = new Mesh(
+  new SphereGeometry(1.3, 32, 32),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.color_s),
     wireframe: false,
 })
 )
 
-sphere.position.set(0, 2, 0)
+const tronco = new Mesh(
+  new SphereGeometry(1.3, 32, 32),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.color_s),
+    wireframe: false,
+})
+)
+
+sphere.position.set(0, 2.3, 0)
+sphere.scale.set(1.25,1.5,1.25)
 sphere.castShadow = true
+scene.add(sphere)
+
+nariz.rotation.set(-Math.PI/4,0,0)
+nariz.position.set(0, 2.3, 1.5)
+nariz.scale.set(0.2,0.3,0.2)
+nariz.castShadow = true
+scene.add(nariz)
+
+tronco.position.set(0, -0.5, 0)
+tronco.scale.set(2,0.7,0.7)
+tronco.castShadow = true
+scene.add(tronco)
+
 
 const foam_l = new Mesh(
   new TorusGeometry( 0.75 , 0.5, 20, 15),
