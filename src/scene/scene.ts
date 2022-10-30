@@ -47,7 +47,7 @@ const PARAMS = {
   color_p: "#D9628D",
   color_dp: "#D663BA",
   color_lb: "#D9FFFF",
-  color_s: "#E69A5C",
+  color_s: "#F0C27F",
 }
 
 // face
@@ -74,8 +74,8 @@ const tronco = new Mesh(
 })
 )
 
-sphere.position.set(0, 2.3, 0)
-sphere.scale.set(1.25,1.5,1.25)
+sphere.position.set(0, 2.5, 0)
+sphere.scale.set(1.25,1.7,1.25)
 sphere.castShadow = true
 scene.add(sphere)
 
