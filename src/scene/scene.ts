@@ -1,4 +1,4 @@
-import THREE, {
+import {
   Scene,
   AxesHelper,
   AmbientLight,
@@ -13,10 +13,11 @@ import THREE, {
   CircleGeometry,
   TorusGeometry,
   CylinderGeometry,
+  ColorRepresentation,
 } from "three"
-import { renderer, updateRenderer } from "/src/core/renderer"
+import * as rendererJs from "../core/renderer.js"
 
-import { gui } from "/src/core/gui"
+import { gui } from "../core/gui.js"
 
 export const scene = new Scene()
 
@@ -58,7 +59,7 @@ const sphere = new Mesh(
     wireframe: false,
 })
 )
-const nariz = new Mesh(
+const nose = new Mesh(
   new SphereGeometry(1.3, 32, 32),
   new MeshToonMaterial({
     color: new Color(PARAMS.color_s),
@@ -66,7 +67,7 @@ const nariz = new Mesh(
 })
 )
 
-const tronco = new Mesh(
+const shoulder = new Mesh(
   new SphereGeometry(1.3, 32, 32),
   new MeshToonMaterial({
     color: new Color(PARAMS.color_s),
@@ -79,16 +80,16 @@ sphere.scale.set(1.25,1.7,1.25)
 sphere.castShadow = true
 scene.add(sphere)
 
-nariz.rotation.set(-Math.PI/4,0,0)
-nariz.position.set(0, 2.3, 1.5)
-nariz.scale.set(0.2,0.3,0.2)
-nariz.castShadow = true
-scene.add(nariz)
+nose.rotation.set(-Math.PI/4,0,0)
+nose.position.set(0, 2.3, 1.5)
+nose.scale.set(0.2,0.3,0.2)
+nose.castShadow = true
+scene.add(nose)
 
-tronco.position.set(0, -0.5, 0)
-tronco.scale.set(2,0.7,0.7)
-tronco.castShadow = true
-scene.add(tronco)
+shoulder.position.set(0, -0.5, 0)
+shoulder.scale.set(2,0.7,0.7)
+shoulder.castShadow = true
+scene.add(shoulder)
 
 
 const foam_l = new Mesh(
@@ -341,7 +342,7 @@ sphereCtrls.addInput(sphere.position, "z", {
   max: 10,
   step: 0.1,
 })
-sphereCtrls.addInput(PARAMS, "color").on("change", (e) => {
+sphereCtrls.addInput(PARAMS, "color").on("change", (e: { value: ColorRepresentation | undefined }) => {
   sphere.material.color = new Color(e.value)
 })
 
@@ -359,5 +360,5 @@ plane.rotation.set(-Math.PI / 2, 0, 0)
 scene.add(plane)
 
 export function updateScene() {
-  updateRenderer()
+  rendererJs.updateRenderer()
 }
