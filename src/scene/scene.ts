@@ -1,19 +1,17 @@
 import {
   Scene,
   AxesHelper,
-  AmbientLight,
-  DirectionalLight,
   Mesh,
   SphereGeometry,
-  MeshToonMaterial,
   PlaneGeometry,
   Color,
   BoxGeometry,
-  MeshBasicMaterial,
+  MeshPhysicalMaterial as MeshDistanceMaterial,
   CircleGeometry,
   TorusGeometry,
   CylinderGeometry,
   ColorRepresentation,
+  PointLight,
 } from "three"
 import * as rendererJs from "../core/renderer.js"
 
@@ -29,17 +27,10 @@ gui.addInput(axesHelper, "visible", {
   label: "AxesHelper",
 })
 
-const ambientLight = new AmbientLight(0xffffff, 0.5)
-scene.add(ambientLight)
+const light = new PointLight( 0xfffFFF, 3, 100, 0);
+light.position.set( 10, 50, 50 );
+scene.add( light );
 
-const directionalLight = new DirectionalLight("#ffffff", 2)
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.camera.far = 500
-directionalLight.shadow.normalBias = 0.5
-directionalLight.position.set(0.25, 2, 2.25)
-
-scene.add(directionalLight)
 
 const PARAMS = {
   color   : "#5EDCAE",
@@ -54,14 +45,14 @@ const PARAMS = {
 // face
 const sphere = new Mesh(
   new SphereGeometry(1.3, 32, 32),
-  new MeshToonMaterial({
+  new MeshDistanceMaterial({
     color: new Color(PARAMS.color_s),
     wireframe: false,
 })
 )
 const nose = new Mesh(
   new SphereGeometry(1.3, 32, 32),
-  new MeshToonMaterial({
+  new MeshDistanceMaterial({
     color: new Color(PARAMS.color_s),
     wireframe: false,
 })
@@ -69,7 +60,7 @@ const nose = new Mesh(
 
 const shoulder = new Mesh(
   new SphereGeometry(1.3, 32, 32),
-  new MeshToonMaterial({
+  new MeshDistanceMaterial({
     color: new Color(PARAMS.color_s),
     wireframe: false,
 })
@@ -94,21 +85,21 @@ scene.add(shoulder)
 
 const foam_l = new Mesh(
   new TorusGeometry( 0.75 , 0.5, 20, 15),
-  new MeshToonMaterial({color: PARAMS.color_lb})
+  new MeshDistanceMaterial({color: PARAMS.color_lb})
 )
 
 const foam_r = new Mesh(
   new TorusGeometry( 0.75 , 0.5, 20, 15),
-  new MeshToonMaterial({color: PARAMS.color_lb})
+  new MeshDistanceMaterial({color: PARAMS.color_lb})
 )
 
 const speaker_r = new Mesh(
   new BoxGeometry(0.5, 2, 2),
-  new MeshBasicMaterial({color: PARAMS.color_p}),
+  new MeshDistanceMaterial({color: PARAMS.color_p}),
 )
 const speaker_l = new Mesh(
   new BoxGeometry(0.5, 2, 2),
-  new MeshBasicMaterial({color: PARAMS.color_p}),
+  new MeshDistanceMaterial({color: PARAMS.color_p}),
 )
   
 const play_symbol_r = new Mesh(
@@ -120,104 +111,104 @@ const play_symbol_l = new Mesh(
 
 const cubo_r_ext = new Mesh(
   new BoxGeometry(0.28, 3/2, 3/2),
-  new MeshBasicMaterial({color: PARAMS.color_dp}),
+  new MeshDistanceMaterial({color: PARAMS.color_dp}),
 )
 
 const cubo_l_ext = new Mesh(
   new BoxGeometry(0.28, 3/2, 3/2),
-  new MeshBasicMaterial({color: PARAMS.color_dp}),
+  new MeshDistanceMaterial({color: PARAMS.color_dp}),
 )
 
 // sequencia lado direito da haste
 const slider_r = new Mesh(
   new BoxGeometry(0.25, 2, 0.5, 5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up = new Mesh(
   new BoxGeometry(0.27, 0.27, 0.55),
-  new MeshToonMaterial({color: PARAMS.color_p})
+  new MeshDistanceMaterial({color: PARAMS.color_p})
 )
 
 const slider_up1 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up2 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up3 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up4 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up5 = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 //sequencia lado esquerdo da haste 
 const slider_l = new Mesh(
   new BoxGeometry(0.25, 2, 0.5, 5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up_l = new Mesh(
   new BoxGeometry(0.27, 0.27, 0.55),
-  new MeshToonMaterial({color: PARAMS.color_p})
+  new MeshDistanceMaterial({color: PARAMS.color_p})
 )
 
 const slider_up1_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up2_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up3_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_up4_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 const slider_up5_l = new Mesh(
   new BoxGeometry(0.25, 0.3, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 // a parte de cima de haste
 const headband = new Mesh(
   new BoxGeometry(0.23, 3.5, 0.5),
-  new MeshToonMaterial({color: PARAMS.color_dp})
+  new MeshDistanceMaterial({color: PARAMS.color_dp})
 )
 
 const slider_foam = new Mesh(
   new CylinderGeometry(0.28, 0.29, 2.5, 12,2),
-  new MeshToonMaterial({color: PARAMS.color_pl})
+  new MeshDistanceMaterial({color: PARAMS.color_pl})
 )
 
 const mic_bind = new Mesh(
   new SphereGeometry(0.75, 32, 20),
-  new MeshToonMaterial({color: PARAMS.color_w})
+  new MeshDistanceMaterial({color: PARAMS.color_w})
 )
 
 const mic = new Mesh(
   new SphereGeometry(0.2, 32,32),
-  new MeshToonMaterial({color: PARAMS.color_p})
+  new MeshDistanceMaterial({color: PARAMS.color_p})
 )
 
 speaker_l.position.set(-2.2,2,0)
@@ -320,9 +311,35 @@ scene.add(headband,
           mic,
           )
 
+const lightCtrls = gui.addFolder({
+  title: "Point Light",
+})
+
+lightCtrls.addInput(light.position, "x", {
+  label: "dir x",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
+lightCtrls.addInput(light.position, "y", {
+  label: "dir y",
+  min: 0,
+  max: 20,
+  step: 0.1,
+})
+
+lightCtrls.addInput(light.position, "z", {
+  label: "dir z",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
 const sphereCtrls = gui.addFolder({
   title: "Sphere",
 })
+
 
 sphereCtrls.addInput(sphere.position, "x", {
   label: "pos x",
@@ -350,7 +367,7 @@ sphereCtrls.addInput(sphere.material, "wireframe")
 
 const plane = new Mesh(
   new PlaneGeometry(10, 10, 10, 10),
-  new MeshToonMaterial({
+  new MeshDistanceMaterial({
     color: new Color("#444"),
   })
 )
