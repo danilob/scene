@@ -9,7 +9,11 @@ import {
   Color,
   MeshPhongMaterial,
   CylinderGeometry,
-  BoxGeometry
+  BoxGeometry,
+  SpotLight,
+  PointLight,
+  HemisphereLight,
+  HemisphereLightProbe
 } from 'three'
 import { updateRenderer } from '../core/renderer'
 
@@ -28,14 +32,46 @@ gui.addInput(axesHelper, 'visible', {
 const ambientLight = new AmbientLight(0xffffff, 0.5)
 scene.add(ambientLight)
 
-const directionalLight = new DirectionalLight('#ffffff', 2)
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.camera.far = 500
-directionalLight.shadow.normalBias = 0.5
-directionalLight.position.set(0.25, 2, 2.25)
+const light = new PointLight(0xff0000, 10, 100)
+light.position.set(1.5, 0, 1)
+scene.add(light)
 
-scene.add(directionalLight)
+const pointLight = gui.addFolder({
+  title: 'PointLight'
+})
+
+pointLight.addInput(light.position, 'x', {
+  label: 'pos x',
+  min: -10,
+  max: 10,
+  step: 0.1
+})
+pointLight.addInput(light.position, 'y', {
+  label: 'pos y',
+  min: -10,
+  max: 10,
+  step: 0.1
+})
+
+const light2 = new HemisphereLight(0x625ed6, 0xff0000, 1)
+scene.add(light2)
+
+const hemisphereLight = gui.addFolder({
+  title: 'HemisphereLight'
+})
+
+hemisphereLight.addInput(light2.position, 'x', {
+  label: 'pos x',
+  min: -10,
+  max: 10,
+  step: 0.1
+})
+hemisphereLight.addInput(light2.position, 'y', {
+  label: 'pos y',
+  min: -10,
+  max: 10,
+  step: 0.1
+})
 
 const PARAMS = {
   color1: '#FB3E2F',
