@@ -13,7 +13,8 @@ import {
   SpotLight,
   PointLight,
   HemisphereLight,
-  HemisphereLightProbe
+  HemisphereLightProbe,
+  MeshMatcapMaterial
 } from 'three'
 import { updateRenderer } from '../core/renderer'
 
@@ -82,9 +83,8 @@ const PARAMS = {
   color6: '#FED101'
 }
 
-const material = new MeshPhongMaterial({
-  color: new Color(PARAMS.color1),
-  wireframe: false
+const material = new MeshMatcapMaterial({
+  color: new Color(PARAMS.color1)
 })
 
 const radiusTop = 2
