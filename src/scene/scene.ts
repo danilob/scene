@@ -2,7 +2,6 @@ import {
   Scene,
   AxesHelper,
   AmbientLight,
-  DirectionalLight,
   Mesh,
   MeshToonMaterial,
   PlaneGeometry,
@@ -10,10 +9,8 @@ import {
   MeshPhongMaterial,
   CylinderGeometry,
   BoxGeometry,
-  SpotLight,
   PointLight,
   HemisphereLight,
-  HemisphereLightProbe,
   MeshMatcapMaterial
 } from 'three'
 import { updateRenderer } from '../core/renderer'
