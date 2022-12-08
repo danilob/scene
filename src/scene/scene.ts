@@ -3,12 +3,20 @@ import {
   AxesHelper,
   AmbientLight,
   DirectionalLight,
+  PointLightHelper,
   Mesh,
   SphereGeometry,
   MeshToonMaterial,
   PlaneGeometry,
   Color,
   CylinderGeometry,
+  PointLight,
+  MeshMatcapMaterial,
+  MeshLambertMaterial,
+  MeshBasicMaterial,
+  MeshNormalMaterial,
+  MeshPhongMaterial,
+  Texture
 } from "three"
 import { renderer, updateRenderer } from "../core/renderer"
 
@@ -28,18 +36,22 @@ gui.addInput(axesHelper, "visible", {
 const ambientLight = new AmbientLight(0xffff00, 1)
 scene.add(ambientLight)
 
-const directionalLight = new DirectionalLight("#fffdb0", 5)
+/*const directionalLight = new DirectionalLight("#fffdb0", 5)
 directionalLight.castShadow = true
 directionalLight.shadow.mapSize.set(1024, 1024)
 directionalLight.shadow.camera.far = -1
 directionalLight.shadow.normalBias = 0.5
 directionalLight.position.set(-2.25, 5, -3)
 
-scene.add(directionalLight)
+scene.add(directionalLight)*/
+
+const pointlight = new PointLight( 0xfffff, 100, 100 );
+pointlight.position.set( -14.5, 15.0, -11.0 );
+scene.add(pointlight);
 
 const PARAMS = {
   color: "#af0e10",
-  color1: "#20adff", 
+  color1: "#ffffff", 
   color2: "#66dcf2",
   color3: "d8d8d8",
   color4: "#ffffff"
@@ -47,9 +59,8 @@ const PARAMS = {
 
 const sol = new Mesh(
   new SphereGeometry(3, 32, 32),
-  new MeshToonMaterial({
-    color: 0xac9d00,
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
  
@@ -59,6 +70,31 @@ sol.castShadow = true
 
 const solCtrls = gui.addFolder({
   title: "Sphere",
+})
+
+const pointlightCtrls = gui.addFolder({
+  title: "Luz Direcional",
+})
+
+pointlightCtrls.addInput(pointlight.position, "x", {
+  label: "dir x",
+  min: -15,
+  max: 15,
+  step: 0.1,
+})
+
+pointlightCtrls.addInput(pointlight.position, "y", {
+  label: "dir y",
+  min: -15,
+  max: 15,
+  step: 0.1,
+})
+
+pointlightCtrls.addInput(pointlight.position, "z", {
+  label: "dir z",
+  min: -15,
+  max: 15,
+  step: 0.1,
 })
 
 solCtrls.addInput(sol.position, "x", {
@@ -92,7 +128,7 @@ scene.add(sol)
 
 const sphere = new Mesh(
   new SphereGeometry(0.75, 32, 32),
-  new MeshToonMaterial({
+  new MeshLambertMaterial({
     color: new Color(PARAMS.color1),
     wireframe: false,
   })
@@ -104,9 +140,8 @@ sphere.castShadow = true
 
 const plane2 = new Mesh(
   new PlaneGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
+  new MeshMatcapMaterial({
     color: new Color(PARAMS.color),
-    wireframe: false,
   })
 )
 
@@ -117,9 +152,8 @@ plane2.castShadow = true
 
 const plane3 = new Mesh(
   new PlaneGeometry(1, 32, 32),
-  new MeshToonMaterial({
+  new MeshPhongMaterial({
     color: new Color(PARAMS.color),
-    wireframe: false,
   })
 )
 
@@ -131,9 +165,8 @@ plane3.castShadow = true
 
 const plane4 = new Mesh(
   new PlaneGeometry(1, 32, 32),
-  new MeshToonMaterial({
+  new MeshPhongMaterial({
     color: new Color(PARAMS.color),
-    wireframe: false,
   })
 )
 
@@ -148,9 +181,8 @@ const sphereCtrls = gui.addFolder({
 
 const plane5 = new Mesh(
   new PlaneGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
+  new MeshMatcapMaterial({
     color: new Color(PARAMS.color),
-    wireframe: false,
   })
 )
 
@@ -161,9 +193,8 @@ plane5.castShadow = true
 
 const cylinder = new Mesh(
   new CylinderGeometry(1, 0.4, 2),
-  new MeshToonMaterial({
+  new MeshLambertMaterial({
     color: new Color(PARAMS.color),
-    wireframe: false,
   })
 )
 
@@ -174,8 +205,8 @@ cylinder.castShadow = true
 
 const plane6 = new Mesh(
   new PlaneGeometry(0.15, 10, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color2),
+  new MeshNormalMaterial({
+    bumpScale: 2,
     wireframe: false,
   })
 )
@@ -189,9 +220,8 @@ plane6.rotation.set(-Math.PI / 1,0,0)
 
 const cloudCenter = new Mesh(
   new SphereGeometry(0.75, 32, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -201,9 +231,8 @@ cloudCenter.castShadow = true
 
 const cloudLeft = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -214,9 +243,8 @@ cloudLeft.rotation.set(0,0 , -4)
 
 const cloudRight = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -228,9 +256,8 @@ cloudRight.rotation.set(0,0 , -4)
 //////cloud2////////////////
 const cloudCenter2 = new Mesh(
   new SphereGeometry(0.75, 32, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -240,9 +267,8 @@ cloudCenter2.castShadow = true
 
 const cloudLeft2 = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -253,9 +279,8 @@ cloudLeft2.rotation.set(0,0 , -4)
 
 const cloudRight2 = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -268,9 +293,8 @@ cloudRight2.rotation.set(0,0 , -4)
 
 const cloudCenter3 = new Mesh(
   new SphereGeometry(0.75, 32, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -280,9 +304,8 @@ cloudCenter3.castShadow = true
 
 const cloudLeft3 = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
@@ -293,9 +316,8 @@ cloudLeft3.rotation.set(0,0 , -4)
 
 const cloudRight3 = new Mesh(
   new SphereGeometry(0.5, 50, 32),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.color4),
-    wireframe: false,
+  new MeshNormalMaterial({
+    bumpMap: new Texture 
   })
 )
 
