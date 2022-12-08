@@ -2,8 +2,6 @@ import {
   Scene,
   AxesHelper,
   AmbientLight,
-  DirectionalLight,
-  PointLightHelper,
   Mesh,
   SphereGeometry,
   MeshToonMaterial,
@@ -13,7 +11,6 @@ import {
   PointLight,
   MeshMatcapMaterial,
   MeshLambertMaterial,
-  MeshBasicMaterial,
   MeshNormalMaterial,
   MeshPhongMaterial,
   Texture
@@ -36,15 +33,6 @@ gui.addInput(axesHelper, "visible", {
 const ambientLight = new AmbientLight(0xffff00, 1)
 scene.add(ambientLight)
 
-/*const directionalLight = new DirectionalLight("#fffdb0", 5)
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.camera.far = -1
-directionalLight.shadow.normalBias = 0.5
-directionalLight.position.set(-2.25, 5, -3)
-
-scene.add(directionalLight)*/
-
 const pointlight = new PointLight( 0xfffff, 100, 100 );
 pointlight.position.set( -14.5, 15.0, -11.0 );
 scene.add(pointlight);
@@ -64,7 +52,6 @@ const sol = new Mesh(
   })
 )
  
-
 sol.position.set(-14.5, 15.0, -11.0)
 sol.castShadow = true
 
@@ -121,11 +108,6 @@ solCtrls.addInput(PARAMS, "color").on("change", (e) => {
 
 solCtrls.addInput(sol.material, "wireframe")
 
-scene.add(sol)
-
-
-
-
 const sphere = new Mesh(
   new SphereGeometry(0.75, 32, 32),
   new MeshLambertMaterial({
@@ -156,7 +138,6 @@ const plane3 = new Mesh(
     color: new Color(PARAMS.color),
   })
 )
-
 
 plane3.position.set(7.75, 7 , 2.4)
 plane3.scale.set(1,0.02,1)
@@ -216,8 +197,6 @@ plane6.scale.set(1,0.01,1)
 plane6.rotation.set(-Math.PI / 1,0,0)
 
 //cloud1//////////////////
-
-
 const cloudCenter = new Mesh(
   new SphereGeometry(0.75, 32, 32),
   new MeshNormalMaterial({
@@ -253,7 +232,7 @@ cloudRight.scale.set(1,1,1)
 cloudRight.castShadow = true
 cloudRight.rotation.set(0,0 , -4)
 
-//////cloud2////////////////
+//////cloud2////////////
 const cloudCenter2 = new Mesh(
   new SphereGeometry(0.75, 32, 32),
   new MeshNormalMaterial({
@@ -288,9 +267,9 @@ cloudRight2.position.set(-2.3, 12 , -2)
 cloudRight2.scale.set(1,1,1)
 cloudRight2.castShadow = true
 cloudRight2.rotation.set(0,0 , -4)
-/////////////////////
 
 
+//cloud3////////
 const cloudCenter3 = new Mesh(
   new SphereGeometry(0.75, 32, 32),
   new MeshNormalMaterial({
@@ -351,6 +330,7 @@ sphereCtrls.addInput(PARAMS, "color").on("change", (e) => {
 
 sphereCtrls.addInput(sphere.material, "wireframe")
 
+///add dirigivel///
 scene.add(sphere)
 scene.add(plane2)
 scene.add(plane3)
@@ -359,19 +339,17 @@ scene.add(plane5)
 scene.add(cylinder)
 scene.add(plane6)
 
+///add nuvens e sol/////
 scene.add(cloudCenter)
 scene.add(cloudLeft)
 scene.add(cloudRight)
-
 scene.add(cloudCenter2)
 scene.add(cloudLeft2)
 scene.add(cloudRight2)
-
-
 scene.add(cloudCenter3)
 scene.add(cloudLeft3)
 scene.add(cloudRight3)
-
+scene.add(sol)
 
 const plane = new Mesh(
   new PlaneGeometry(50, 50, 50, 50),
